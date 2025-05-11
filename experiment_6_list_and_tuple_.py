@@ -157,14 +157,19 @@ associating quantities with each item (e.g., a list of tuples: [("Laptop", 1), (
 
 def customer_order():
     order = []
+
     while True:
-        item = input("Enter item to add (or 'done' to finish): ")
+        item = input("Enter item (or 'done' to finish): ")
         if item == 'done':
             break
-        order.append(item)
+        qty = int(input("Enter quantity: "))
+        order.append((item, qty))
 
-    print(f"Current Order: {order}")
-    print(f"Total Items: {len(order)}")
+    print("Order:")
+    for i, q in order:
+        print(i, q)
+    total = sum(q for _, q in order)
+    print("Total items:", total)
 
 customer_order()
 
